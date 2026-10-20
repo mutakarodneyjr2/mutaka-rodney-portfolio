@@ -1,0 +1,39 @@
+---
+const current = Astro.url.pathname;
+const nav = [
+  { label: 'Work', href: '/#work' },
+  { label: 'About', href: '/about' },
+  { label: 'Motion', href: '/work/motion' },
+  { label: 'Contact', href: '/#contact' },
+  { label: 'Download CV', href: '/Mutaka_Rodney_CV.pdf', download: true },
+];
+---
+<header class="site-header">
+  <div class="header-inner wrap">
+    <a href="/" class="wordmark" aria-label="Mutaka Rodney — homepage">MUTAKA <span class="wordmark-divider">/</span> RODNEY</a>
+    <span class="header-kicker">INDEPENDENT CREATIVE ENGINEER</span>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      {nav.map(n => <a class={current === n.href ? 'current' : ''} href={n.href} download={n.download ? 'Mutaka_Rodney_CV.pdf' : undefined}>{n.label}</a>)}
+    </nav>
+    <button id="mobile-menu-button" class="mobile-menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu">MENU <span class="menu-mark">+</span></button>
+    <a class="arrow-link" href="/#contact" aria-label="Contact Mutaka Rodney">↗</a>
+  </div>
+  <nav id="mobile-menu" class="mobile-nav" aria-label="Mobile navigation" hidden>
+    {nav.map((n,i) => <a href={n.href} download={n.download ? 'Mutaka_Rodney_CV.pdf' : undefined}><span>0{i+1}</span>{n.label}<span aria-hidden="true">↗</span></a>)}
+  </nav>
+</header>
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('#mobile-menu-button');
+  const menu = document.querySelector<HTMLElement>('#mobile-menu');
+  btn?.addEventListener('click', () => {
+    if (!menu) return;
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!expanded));
+    menu.hidden = expanded;
+    btn.querySelector('.menu-mark')!.textContent = expanded ? '+' : '−';
+  });
+  menu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    if (btn) btn.setAttribute('aria-expanded', 'false');
+    menu.hidden = true;
+  }));
+</script>

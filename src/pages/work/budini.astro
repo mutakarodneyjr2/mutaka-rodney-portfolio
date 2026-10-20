@@ -1,0 +1,24 @@
+---
+import Base from '../../layouts/Base.astro';
+import { budiniScreens } from '../../data/content';
+---
+<Base title="Budini Alumni Platform — Mutaka Rodney" description="A look at Budini Alumni Platform, an in-development community application created by Mutaka Rodney using React Native and Django.">
+<section class="inner-masthead wrap" id="top"><span class="mono small blue">PROJECT 01 / SOFTWARE ENGINEERING</span><a class="mono small text-link" href="/#work">← BACK TO WORK</a></section>
+<section class="inner-hero dark-block"><div class="wrap">
+  <div class="project-line mono small">REAL APPLICATION <span>/</span> IN DEVELOPMENT</div>
+  <h1>BUDINI<br />ALUMNI.</h1>
+  <p>Building a digital community where former students can reconnect, find people, share memories and take part in school-related opportunities.</p>
+</div></section>
+<section class="budini-process wrap">
+  {[
+    ['01 / ACCESS','Sign in'],['02 / COMMUNITY','Home'],['03 / CONTENT','Memories'],['04 / NETWORK','People'],['05 / MEMBER AREA','Profile']
+  ].map((a) => <div><span class="mono tiny blue">{a[0]}</span><h2>{a[1]}</h2></div>)}
+</section>
+<section class="screens-section wrap" aria-label="Budini Alumni mobile interface previews">
+  <div class="screens-grid">
+    {budiniScreens.map((s) => <figure data-reveal class="app-screen"><div><img src={s.image} alt={`Budini Alumni application — ${s.title} screen`} loading="lazy" width="540" height="1200" /></div><figcaption class="mono tiny"><span>{s.number}</span>{s.title.toUpperCase()}</figcaption></figure>)}
+  </div>
+</section>
+<section class="case-explainer"><div class="wrap explainer-grid"><div><span class="mono small blue">THE WORK / BUILT WITH PURPOSE</span><h2>An application with a community at its core.</h2></div><div><p>This case study documents an in-progress application. The screens are development previews, not evidence of a public production release.</p><p>The project combines a mobile interface with a Django REST backend, data management, user accounts and community workflows.</p><div class="mono small subtle">REACT NATIVE / EXPO / DJANGO REST / POSTGRESQL</div></div></div></section>
+<section class="case-cta wrap"><span class="mono small blue">UP NEXT / THE CREATIVE SIDE</span><h2>From systems to stories.</h2><a href="/work/visuals" class="outline-button">EXPLORE VISUAL WORK <span>↗</span></a></section>
+</Base>

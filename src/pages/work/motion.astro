@@ -1,0 +1,16 @@
+---
+import Base from '../../layouts/Base.astro';
+import { motionPieces } from '../../data/content';
+---
+<Base title="Motion & Editing — Mutaka Rodney" description="Three short-form, AI-assisted video editing projects showcasing creator-led business storytelling.">
+<section class="inner-masthead wrap" id="top"><span class="mono small blue">03 / MOTION & EDITING</span><a class="mono small text-link" href="/#work">← BACK TO WORK</a></section>
+<div class="wrap motion-intro"><h1>STORIES IN<br />MOTION.</h1><p class="mono small subtle">THREE SELECTED FILMS / EDITED SHORT-FORM CONTENT</p></div>
+<section class="wrap motion-grid">
+  {motionPieces.map((film) => <article class="film-card" data-reveal>
+    <div class="film-topline mono small blue">{film.number} / {film.category.toUpperCase()}</div>
+    <div class="video-shell"><video controls playsinline preload="none" poster={film.poster} aria-label={`${film.title}: ${film.description}`}><source src={film.src} type="video/mp4" />Your browser does not support video playback.</video></div>
+    <div class="film-details"><div class="film-title-line"><h2>{film.title}</h2><span class="mono tiny blue">{film.duration}</span></div><span class="mono tiny subtle">{film.subtitle.toUpperCase()}</span><p>{film.description}</p></div>
+  </article>)}
+</section>
+<section class="wrap motion-footnote"><div class="short-rule"></div><p><strong>Process:</strong> A mix of on-camera delivery, supporting footage, subtitles and visual editing. The clips are presented as video-editing work; AI assistance is acknowledged without attributing every shot to generative AI.</p></section>
+</Base>

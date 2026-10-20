@@ -1,0 +1,97 @@
+---
+import Base from '../layouts/Base.astro';
+import { profile, selectedArtworks, motionPieces } from '../data/content';
+const topArt = [selectedArtworks[0],selectedArtworks[2],selectedArtworks[4]];
+---
+<Base title="Mutaka Rodney — Software, Visuals & Motion" description="The portfolio of Mutaka Rodney: software engineering, AI-assisted visual design, and motion editing in Kampala, Uganda.">
+  <section class="hero section-shell" id="top">
+    <div class="wrap">
+      <div class="hero-eyebrow mono"><span class="blue-dot"></span> SOFTWARE ENGINEERING <span class="slash">/</span> AI CREATIVE <span class="hero-place">KAMPALA, UGANDA ↗</span></div>
+      <h1 class="hero-title">CODE, IMAGE<br /><span>& EVERYTHING</span><br /><em>IN BETWEEN.</em></h1>
+      <div class="hero-bottom">
+        <span class="mono small subtle">A CREATIVE PRACTICE ACROSS THREE DISCIPLINES</span>
+        <p>I build useful digital products and explore new visual possibilities through AI-assisted imagery and motion.</p>
+      </div>
+    </div>
+  </section>
+  <section class="identity section-shell">
+    <div class="wrap identity-grid" data-reveal>
+      <div class="identity-photo"><img src="/media/rodney-portrait.webp" alt="Portrait of Mutaka Rodney" width="960" height="1200" fetchpriority="high" /></div>
+      <div class="identity-copy">
+        <span class="mono small blue">THE PERSON / BEHIND THE WORK</span>
+        <h2>I'M MUTAKA<br />RODNEY.</h2>
+        <p>Engineer by training. Creative by instinct. I bring software, AI-driven visuals and motion into one working practice.</p>
+        <div class="identity-actions"><a href="/about" class="inline-action">MORE ABOUT ME <span>↗</span></a><a href="/Mutaka_Rodney_CV.pdf" download="Mutaka_Rodney_CV.pdf" class="inline-action">DOWNLOAD CV <span>↓</span></a></div>
+      </div>
+    </div>
+  </section>
+  <section class="disciplines section-shell">
+    <div class="wrap discipline-row" aria-label="My creative disciplines">
+      <a href="/work/budini"><span class="mono small blue">01 / SOFTWARE</span><h3>Systems that work.</h3><span aria-hidden="true">↗</span></a>
+      <a href="/work/visuals"><span class="mono small blue">02 / AI VISUALS</span><h3>Visuals with intent.</h3><span aria-hidden="true">↗</span></a>
+      <a href="/work/motion"><span class="mono small blue">03 / MOTION</span><h3>Stories that move.</h3><span aria-hidden="true">↗</span></a>
+    </div>
+  </section>
+  <section id="work" class="selected-work section-shell">
+    <div class="wrap selected-head"><span class="mono small blue">SELECTED WORK / 2026</span><div class="selected-row"><h2>A practice in progress.</h2><span class="mono small blue">01—03</span></div></div>
+    <article class="budini-feature" data-reveal>
+      <div class="wrap budini-feature-grid">
+        <div class="budini-feature-content">
+          <div class="case-meta mono small"><span>01 / SOFTWARE ENGINEERING</span><span class="status-dot">IN DEVELOPMENT</span></div>
+          <h3>BUDINI<br />ALUMNI.</h3>
+          <div class="short-rule"></div>
+          <p>A community platform being built to reconnect alumni through verified membership, shared memories, purposeful connections and opportunities.</p>
+          <span class="mono small soft-white">REACT NATIVE / DJANGO REST / POSTGRESQL</span>
+          <a class="case-link" href="/work/budini">VIEW CASE STUDY <span>↗</span></a>
+        </div>
+        <div class="budini-visual" aria-label="Budini Alumni development screen previews">
+          <div class="ring ring-large"></div><div class="ring ring-mid"></div>
+          <div class="phone-shot phone-left"><img src="/media/budini-home.webp" alt="Budini Alumni community feed screen" loading="lazy" /></div>
+          <div class="phone-shot phone-middle"><img src="/media/budini-people.webp" alt="Budini Alumni people directory screen" loading="lazy" /></div>
+          <div class="phone-shot phone-right"><img src="/media/budini-profile.webp" alt="Budini Alumni profile screen" loading="lazy" /></div>
+          <div class="visual-tag mono small">REAL APP SCREENS / DEVELOPMENT PREVIEW</div>
+        </div>
+      </div>
+    </article>
+    <div class="wrap creative-work" data-reveal>
+      <div class="eyebrow mono small blue">02—03 / CLIENT GRAPHICS & MOTION</div>
+      <h2>Beyond the interface.</h2>
+      <p class="creative-intro">Selected commissioned visuals, AI-assisted promotional graphics and motion work.</p>
+      <div class="creative-feature-grid">
+        <a href="/work/visuals" class="creative-panel artwork-preview">
+          <div class="artwork-media">
+            <img class="art-primary" src={topArt[0].image} alt="Stat Solutions Uganda Independence Day commercial campaign graphic" loading="lazy" />
+            <img class="art-secondary" src={topArt[1].image} alt="Birthday celebration graphic for a paying client" loading="lazy" />
+            <span class="corner-notation mono">PAID CLIENT WORK / 2026</span>
+          </div>
+          <div class="panel-label"><h3>CLIENT / VISUAL WORK</h3><span>REAL PAID COMMISSIONS ↗</span></div>
+        </a>
+        <a href="/work/motion" class="creative-panel motion-preview">
+          <div class="motion-media">
+            <img src={motionPieces[2].poster} alt="Frame from short-form motion editing project" loading="lazy" />
+            <span class="play-badge" aria-hidden="true">▶</span>
+            <span class="mono motion-notice">THREE SELECTED FILMS</span>
+          </div>
+          <div class="panel-label"><h3>MOTION / EDITING</h3><span>VIEW FILMS ↗</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+  <section class="about-teaser" data-reveal>
+    <div class="wrap about-teaser-grid">
+      <div><div class="mono small blue">04 / ABOUT THE PRACTICE</div><h2>ONE PRACTICE.<br />MANY MEDIUMS.</h2></div>
+      <div class="about-teaser-copy"><p>I'm Mutaka Rodney, a software engineering student and creative technologist based in Kampala, Uganda. My work connects product engineering with the expressive possibilities of artificial intelligence.</p><div class="short-rule"></div><span class="mono small blue">CURRENT FOCUS</span><p class="mono small">REACT NATIVE / DJANGO / AI IMAGE / VIDEO</p><a href="/about" class="inline-action">EXPLORE MY PRACTICE <span>↗</span></a></div>
+    </div>
+  </section>
+  <section id="contact" class="contact-section" data-reveal>
+    <div class="wrap contact-grid">
+      <div><span class="mono small">05 / HAVE A PROJECT OR AN IDEA?</span><h2>LET'S MAKE<br />SOMETHING REAL.</h2></div>
+      <div class="contact-actions">
+        {profile.contactEmail ? <a href={`mailto:${profile.contactEmail}`} class="light-button">START A CONVERSATION <span>↗</span></a> : <div class="light-button light-button-note">CONTACT DETAILS COMING SOON <span>↗</span></div>}
+        <p>Open to thoughtful collaborations across software, visual design and motion.</p>
+        <a href={`https://wa.me/${profile.whatsapp}`} class="contact-secondary" target="_blank" rel="noopener noreferrer">WHATSAPP <span aria-hidden="true">↗</span></a>
+        <a href={profile.social.linkedin} class="contact-secondary" target="_blank" rel="noopener noreferrer">LINKEDIN <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+</Base>

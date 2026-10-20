@@ -1,0 +1,35 @@
+---
+import Base from '../../layouts/Base.astro';
+import { selectedArtworks } from '../../data/content';
+const groups = [
+  { number: '01', name: 'Corporate campaigns', client: 'STAT SOLUTIONS', clientExtended: 'RESEARCH NETWORK LIMITED', description: 'Commissioned campaign artwork for Stat Solutions Research Network Limited, including Independence Day and Customer Service Month graphics.' },
+  { number: '02', name: 'Portrait & occasion', client: 'PORTRAIT / OCCASION.', clientExtended: 'PERSONAL CELEBRATIONS', description: 'Personalized birthday graphics combining portrait treatment, event messaging and carefully composed typography.' },
+  { number: '03', name: 'Commercial advertising', client: 'YESU AKYUSA VENTURES.', clientExtended: 'BRAND & SERVICE PROMOTION', description: 'Brand and service promotion across travel, car hire and additional offerings.' },
+];
+---
+<Base title="Visual Work — Mutaka Rodney" description="Selected paid client commissions and AI-assisted promotional graphics by Mutaka Rodney.">
+<section class="inner-masthead wrap" id="top"><span class="mono small blue">PROJECT ARCHIVE / 2026</span><a class="mono small text-link" href="/#work">← BACK TO WORK</a></section>
+<div class="wrap gallery-intro"><h1>VISUAL WORK.</h1><p class="mono small subtle">SELECTED PAID CLIENT COMMISSIONS / AI-ASSISTED GRAPHIC DESIGN</p></div>
+{groups.map((g) => <section class="work-group wrap" data-reveal>
+  <div class="mono small blue group-index">{g.number} / {g.name.toUpperCase()}</div>
+  <h2>{g.client}</h2><span class="mono tiny subtle">{g.clientExtended}</span>
+  <div class="work-group-content">
+    <div class="art-grid">
+      {selectedArtworks.filter(a=>a.group === g.name).map((a) => <button class={`art-tile tile-${a.aspect}`} data-gallery-image={a.image} data-gallery-label={a.title} aria-label={`Enlarge ${a.title}`}><img src={a.image} alt={`${a.title} — paid commission for ${a.client}`} loading="lazy" /><span>ENLARGE ↗</span></button>)}
+    </div>
+    <div class="group-description"><h3>{g.number==='01'?'Campaign design for a research network.':g.number==='02'?'Personal, made memorable.':'Design for the real world.'}</h3><div class="short-rule"></div><p>{g.description}</p><span class="mono tiny blue">REAL CLIENT WORK / SELECTED COMMISSIONS</span></div>
+  </div>
+</section>)}
+<dialog id="image-viewer" class="image-modal" aria-label="Artwork preview"><form method="dialog"><button aria-label="Close artwork preview">× CLOSE</button></form><img id="image-viewer-image" src="" alt="" /><p class="mono small" id="image-viewer-caption"></p></dialog>
+<script>
+  const dlg = document.querySelector<HTMLDialogElement>('#image-viewer');
+  const img = document.querySelector<HTMLImageElement>('#image-viewer-image');
+  const caption = document.querySelector<HTMLElement>('#image-viewer-caption');
+  document.querySelectorAll<HTMLButtonElement>('[data-gallery-image]').forEach(button => button.addEventListener('click', () => {
+    if (!dlg || !img || !caption) return;
+    img.src=button.dataset.galleryImage||'';img.alt=button.dataset.galleryLabel||'Artwork';caption.textContent=button.dataset.galleryLabel||'';
+    dlg.showModal();
+  }));
+  dlg?.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+</script>
+</Base>
